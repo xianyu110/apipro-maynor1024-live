@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maynor API Pro 域名停用通知</title>
+    <meta
+      name="description"
+      content="https://apipro.maynor1024.live/ 由于政策原因不再使用，请使用新域名 https://api.maynor1024.live/"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f8fb;
+        --panel: #ffffff;
+        --text: #121826;
+        --muted: #5d6678;
+        --border: #d9dee8;
+        --accent: #1464f4;
+        --accent-dark: #0f4ec0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px 18px;
+        background:
+          linear-gradient(135deg, rgba(20, 100, 244, 0.08), transparent 34%),
+          var(--bg);
+        color: var(--text);
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      main {
+        width: min(760px, 100%);
+        padding: 42px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 24px 70px rgba(18, 24, 38, 0.08);
+      }
+
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(30px, 5vw, 48px);
+        line-height: 1.08;
+        font-weight: 750;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .domains {
+        display: grid;
+        gap: 14px;
+        margin: 30px 0;
+      }
+
+      .domain-row {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 14px;
+        align-items: center;
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fbfcff;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      code,
+      a {
+        overflow-wrap: anywhere;
+        font-size: 17px;
+      }
+
+      code {
+        color: var(--text);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      a {
+        color: var(--accent);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--accent-dark);
+        text-decoration: underline;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 8px;
+        background: var(--accent);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 750;
+        text-decoration: none;
+      }
+
+      .button:hover {
+        background: var(--accent-dark);
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      @media (max-width: 560px) {
+        main {
+          padding: 30px 22px;
+        }
+
+        .domain-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Maynor API Pro 域名停用通知</h1>
+      <p>由于政策原因，旧域名不再使用。请将接口、文档和配置中的服务地址替换为新域名。</p>
+
+      <section class="domains" aria-label="域名变更">
+        <div class="domain-row">
+          <span class="label">旧域名</span>
+          <code>https://apipro.maynor1024.live/</code>
+        </div>
+        <div class="domain-row">
+          <span class="label">新域名</span>
+          <a href="https://api.maynor1024.live/">https://api.maynor1024.live/</a>
+        </div>
+      </section>
+
+      <p>如果你的应用仍在使用旧域名，请尽快切换到新域名以避免访问失败。</p>
+
+      <div class="actions">
+        <a class="button" href="https://api.maynor1024.live/">打开新域名</a>
+      </div>
+    </main>
+  </body>
+</html>
+
