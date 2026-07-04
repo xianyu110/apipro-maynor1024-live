@@ -11,13 +11,18 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f7f8fb;
+        --bg: #f4f7fb;
         --panel: #ffffff;
         --text: #121826;
         --muted: #5d6678;
-        --border: #d9dee8;
-        --accent: #1464f4;
-        --accent-dark: #0f4ec0;
+        --border: #d7deea;
+        --accent: #1368f5;
+        --accent-dark: #0d4fbf;
+        --success: #0b8f6a;
+        --warning: #b45309;
+        --soft-blue: #e8f0ff;
+        --soft-green: #e8f8f1;
+        --soft-amber: #fff3df;
       }
 
       * {
@@ -29,9 +34,17 @@
         min-height: 100vh;
         display: grid;
         place-items: center;
-        padding: 32px 18px;
+        padding: 44px 18px;
         background:
-          linear-gradient(135deg, rgba(20, 100, 244, 0.08), transparent 34%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(244, 247, 251, 0.96)),
+          linear-gradient(135deg, rgba(19, 104, 245, 0.12), transparent 38%),
+          repeating-linear-gradient(
+            90deg,
+            rgba(18, 24, 38, 0.035) 0,
+            rgba(18, 24, 38, 0.035) 1px,
+            transparent 1px,
+            transparent 72px
+          ),
           var(--bg);
         color: var(--text);
         font-family:
@@ -44,55 +57,94 @@
       }
 
       main {
-        width: min(760px, 100%);
-        padding: 42px;
+        position: relative;
+        width: min(820px, 100%);
+        overflow: hidden;
+        padding: 52px;
         border: 1px solid var(--border);
         border-radius: 8px;
         background: var(--panel);
-        box-shadow: 0 24px 70px rgba(18, 24, 38, 0.08);
+        box-shadow:
+          0 30px 90px rgba(18, 24, 38, 0.12),
+          0 2px 10px rgba(18, 24, 38, 0.04);
+      }
+
+      main::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto;
+        height: 7px;
+        background: linear-gradient(90deg, var(--warning), var(--accent), var(--success));
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        margin-bottom: 20px;
+        padding: 8px 12px;
+        border: 1px solid #f0c47a;
+        border-radius: 8px;
+        background: var(--soft-amber);
+        color: #7c3f00;
+        font-size: 14px;
+        font-weight: 800;
       }
 
       h1 {
-        margin: 0 0 18px;
-        font-size: clamp(30px, 5vw, 48px);
+        max-width: 660px;
+        margin: 0 0 20px;
+        font-size: clamp(34px, 5vw, 54px);
         line-height: 1.08;
-        font-weight: 750;
+        font-weight: 800;
       }
 
       p {
+        max-width: 680px;
         margin: 0;
         color: var(--muted);
-        font-size: 18px;
-        line-height: 1.75;
+        font-size: 19px;
+        line-height: 1.72;
       }
 
       .domains {
         display: grid;
-        gap: 14px;
-        margin: 30px 0;
+        gap: 16px;
+        margin: 34px 0;
       }
 
       .domain-row {
         display: grid;
-        grid-template-columns: 92px 1fr;
-        gap: 14px;
+        grid-template-columns: 108px 1fr;
+        gap: 18px;
         align-items: center;
-        padding: 16px;
+        padding: 20px;
         border: 1px solid var(--border);
         border-radius: 8px;
         background: #fbfcff;
       }
 
+      .domain-row.old {
+        border-color: #f3cf92;
+        background: var(--soft-amber);
+      }
+
+      .domain-row.new {
+        border-color: #a7dfca;
+        background: var(--soft-green);
+      }
+
       .label {
         color: var(--muted);
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 800;
+        letter-spacing: 0;
       }
 
       code,
       a {
         overflow-wrap: anywhere;
-        font-size: 17px;
+        font-size: 18px;
       }
 
       code {
@@ -102,7 +154,7 @@
 
       a {
         color: var(--accent);
-        font-weight: 700;
+        font-weight: 800;
         text-decoration: none;
       }
 
@@ -115,52 +167,86 @@
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 28px;
+        margin-top: 34px;
       }
 
       .button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 46px;
-        padding: 0 18px;
+        gap: 10px;
+        min-height: 62px;
+        padding: 0 30px;
         border-radius: 8px;
-        background: var(--accent);
+        background: linear-gradient(135deg, var(--accent), #0ea66d);
         color: #ffffff;
-        font-size: 16px;
-        font-weight: 750;
+        font-size: 19px;
+        font-weight: 850;
         text-decoration: none;
+        box-shadow:
+          0 16px 34px rgba(19, 104, 245, 0.22),
+          0 8px 18px rgba(14, 166, 109, 0.16);
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease,
+          filter 160ms ease;
       }
 
       .button:hover {
-        background: var(--accent-dark);
+        filter: brightness(0.96);
+        transform: translateY(-1px);
         color: #ffffff;
         text-decoration: none;
+        box-shadow:
+          0 20px 40px rgba(19, 104, 245, 0.26),
+          0 10px 22px rgba(14, 166, 109, 0.18);
+      }
+
+      .button:focus-visible {
+        outline: 4px solid rgba(19, 104, 245, 0.22);
+        outline-offset: 4px;
+      }
+
+      .button span {
+        font-size: 23px;
+        line-height: 1;
       }
 
       @media (max-width: 560px) {
+        body {
+          padding: 22px 14px;
+        }
+
         main {
-          padding: 30px 22px;
+          padding: 38px 22px 30px;
         }
 
         .domain-row {
           grid-template-columns: 1fr;
           gap: 6px;
+          padding: 18px;
+        }
+
+        .button {
+          width: 100%;
+          min-height: 64px;
+          padding: 0 20px;
         }
       }
     </style>
   </head>
   <body>
     <main>
+      <div class="status">域名变更通知</div>
       <h1>Maynor API Pro 域名停用通知</h1>
       <p>由于政策原因，旧域名不再使用。请将接口、文档和配置中的服务地址替换为新域名。</p>
 
       <section class="domains" aria-label="域名变更">
-        <div class="domain-row">
+        <div class="domain-row old">
           <span class="label">旧域名</span>
           <code>https://apipro.maynor1024.live/</code>
         </div>
-        <div class="domain-row">
+        <div class="domain-row new">
           <span class="label">新域名</span>
           <a href="https://api.maynor1024.live/">https://api.maynor1024.live/</a>
         </div>
@@ -169,9 +255,8 @@
       <p>如果你的应用仍在使用旧域名，请尽快切换到新域名以避免访问失败。</p>
 
       <div class="actions">
-        <a class="button" href="https://api.maynor1024.live/">打开新域名</a>
+        <a class="button" href="https://api.maynor1024.live/">打开新域名 <span aria-hidden="true">→</span></a>
       </div>
     </main>
   </body>
 </html>
-
